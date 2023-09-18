@@ -5,14 +5,14 @@ console.log(galleryItems);
 
 const list = document.querySelector(".gallery");
 
-list.insertAdjacentHTML("beforebegin", createMarkup(galleryItems));
+list.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
 list.addEventListener("click", handleClick);
 
 function createMarkup(arr) {
   return arr
     .map(
       (item) => `
-  <li class"gallery__item">
+  <li class"gallery__item js-gallery-item">
    <a class="gallery__link" href="${item.original}">
     <img
       class="gallery__image"
@@ -27,17 +27,50 @@ function createMarkup(arr) {
     .join("");
 }
 
-function handleClick() {
-  const instance = basicLightbox.create(`  <li class"gallery__item">
-   <a class="gallery__link" href="${item.original}">
-    <img
-      class="gallery__image"
-      src="${item.preview}"
-      data-source="large-image.jpg"
-      alt="${item.description}"
-    />
-  </a>
-  </li>`);
+// import { galleryItems } from "./gallery-items.js";
 
-  instance.show();
-}
+// console.log(galleryItems);
+
+// const list = document.querySelector(".gallery");
+
+// list.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
+// list.addEventListener("click", handleClick);
+
+// function createMarkup(arr) {
+//   return arr
+//     .map(
+//       (item) => `
+//     <li class="gallery__item js-gallery-item">
+//       <a class="gallery__link" href="${item.original}">
+//         <img
+//           class="gallery__image"
+//           src="${item.preview}"
+//           data-source="${item.original}"
+//           alt="${item.description}"
+//         />
+//       </a>
+//     </li>
+//       `
+//     )
+//     .join("");
+// }
+
+// function handleClick(event) {
+//   event.preventDefault();
+
+//   if (event.target === event.currentTarget) {
+//     return;
+//   }
+
+//   const currentGallery = event.target.closest(".js-gallery-item");
+//   if (!currentGallery) return;
+
+//   const instance = basicLightbox.create(`
+//     <img
+//       class="gallery__image"
+//       src="${event.target.dataset.source}"
+//       alt="${event.target.alt}"
+//     />
+//   `);
+//   instance.show();
+// }
