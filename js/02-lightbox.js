@@ -1,5 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 
+const list = document.querySelector(".gallery");
+
 function createMarkup(arr) {
   return arr
     .map(
@@ -19,16 +21,9 @@ function createMarkup(arr) {
     .join("");
 }
 
-const list = document.querySelector(".gallery");
 list.innerHTML = createMarkup(galleryItems);
 
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "title",
   captionDelay: 250,
-});
-
-list.addEventListener("click", (e) => {
-  if (e.target.tagName === "IMG") {
-    lightbox.open();
-  }
 });
